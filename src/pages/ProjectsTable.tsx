@@ -52,7 +52,7 @@ async function refreshTokenFunction(refreshToken: string): Promise<string> {
 }
 async function getAdminData():Promise<Project[]>{
   try {
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('adminToken'); 
 
     const response = await fetch('http://localhost:3000/admin/projects', {
       method: 'GET',
@@ -187,7 +187,11 @@ async function getData(): Promise<Project[]> {
 export function DemoPage() {
 
   const [data, setData] = useState<Project[]>([]);
-
+  // let token = localStorage.getItem('token');
+  // let refreshToken = localStorage.getItem('refreshToken');
+  // if (isTokenExpired(token)) {
+  //   refreshTokenFunction(refreshToken);
+  // }
   useEffect(() => {
     const fetchData = async () => {
       const data = await getData();
